@@ -2,10 +2,10 @@
   <div class="promotion-component" :style="{ backgroundColor: promotion.color }">
     <div class="promotion-content">
       <h2>{{ promotion.title }}</h2>
-      <ButtonComponent :promotion="promotion" />
+      <ButtonComponent @click="shopNow(promotion)" :promotion="promotion" />
     </div>
     <div class="promotion-image">
-      <img :src="promotion.img" alt="Promotion Image" />
+      <img :src="getBackendImageUrl(promotion.image)" alt="Promotion Image" />
     </div>
   </div>
 </template>
@@ -20,6 +20,14 @@ export default {
     promotion: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    shopNow(promotion) {
+      alert("Let's shop " + promotion.title)
+    },
+    getBackendImageUrl(relativePath: string) {
+      return `http://localhost:3000/${relativePath}`
     },
   },
 }

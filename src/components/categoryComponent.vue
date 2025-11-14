@@ -1,6 +1,6 @@
 <template>
   <div class="category-component" :style="{ backgroundColor: category.color }">
-    <img :src="category.img" :alt="category.name" class="category-image" />
+    <img :src="getBackendImageUrl(category.image)" :alt="category.name" class="category-image" />
     <div class="category-info">
       <h3>{{ category.name }}</h3>
       <p>{{ category.productCount }} items</p>
@@ -14,6 +14,11 @@ export default {
     category: {
       type: Object,
       required: true,
+    },
+  },
+  methods: {
+    getBackendImageUrl(relativePath: string) {
+      return `http://localhost:3000/${relativePath}`
     },
   },
 }
