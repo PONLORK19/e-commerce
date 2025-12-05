@@ -1,149 +1,195 @@
 <template>
-  <div class="">
+  <div>
+    <!-- Category Tabs -->
+    <MenuComponent
+      title="Featured Categories"
+      :tabs="categoryTabs"
+      :activeTab="activeCategoryTab"
+      @tab-change="handleCategoryTabChange"
+    />
+
     <div class="categories-grid">
-      <CategoryComponent v-for="category in categories" :key="category.name" :category="category" />
+      <CategoryComponent
+        v-for="category in displayedCategories"
+        :key="category.id"
+        :category="category"
+      />
     </div>
+
     <div class="promotion-grid">
       <PromotionComponent
         v-for="promotion in promotions"
-        :key="promotion.title"
+        :key="promotion.id"
         :promotion="promotion"
+      />
+    </div>
+
+    <!-- Popular Products -->
+    <MenuComponent
+      title="Popular Products"
+      :tabs="productTabs"
+      :activeTab="activeProductTab"
+      @tab-change="handleProductTabChange"
+    />
+
+    <div class="product-grid">
+      <ProductComponent
+        v-for="product in displayedPopularProducts"
+        :key="product.id"
+        :name="product.name"
+        :category="getCategoryName(product.categoryId)"
+        :image="product.image"
+        :price="product.price"
+        :rating="product.rating"
+        :size="product.size"
+        :discount="product.discount"
+        @add-to-cart="() => handleAddToCart(product)"
       />
     </div>
   </div>
 </template>
+
 <script lang="ts">
+import axios from 'axios'
+import MenuComponent from './components/menuComponent.vue'
 import CategoryComponent from './components/categoryComponent.vue'
 import PromotionComponent from './components/promotionComponent.vue'
-import axios from 'axios'
+import ProductComponent from './components/productComponent.vue'
+
+interface Category {
+  id: number
+  name: string
+  group: string
+}
+
+interface Promotion {
+  id: number
+  title: string
+  image: string
+  url?: string
+  color?: string
+  buttonColor?: string
+}
+
+interface Product {
+  id: number
+  name: string
+  categoryId: number
+  image: string
+  price: number
+  rating: number
+  size: string
+  discount?: number
+  group?: string
+  isPopular?: boolean
+}
 
 export default {
   components: {
     CategoryComponent,
     PromotionComponent,
+    MenuComponent,
+    ProductComponent,
   },
+
+  data() {
+    return {
+      categories: [] as Category[],
+      promotions: [] as Promotion[],
+      products: [] as Product[],
+      groups: [] as string[],
+
+      activeCategoryTab: 'All',
+      activeProductTab: 'All',
+    }
+  },
+
+  computed: {
+    categoryTabs(): string[] {
+      return ['All', ...this.groups]
+    },
+    productTabs(): string[] {
+      return ['All', ...this.groups]
+    },
+
+    displayedCategories(): Category[] {
+      if (this.activeCategoryTab === 'All') return this.categories.slice(0, 10)
+      return this.categories.filter((c) => c.group === this.activeCategoryTab)
+    },
+
+    displayedPopularProducts(): Product[] {
+      let filtered = this.products.filter((p) => p.isPopular)
+      if (this.activeProductTab !== 'All') {
+        filtered = filtered.filter((p) => p.group === this.activeProductTab)
+      }
+      return filtered.slice(0, 10)
+    },
+  },
+
   methods: {
     async fetchCategories() {
       try {
-        const response = await axios.get('http://localhost:3000/api/categories')
-
-        this.categories = response.data
-        console.log('Categories fetched:', response.data)
-      } catch (error) {
-        console.error('Error fetching categories:', error)
+        const res = await axios.get<Category[]>('http://localhost:3000/api/categories')
+        this.categories = res.data
+      } catch (err) {
+        console.error(err)
       }
     },
+
     async fetchPromotions() {
       try {
-        const response = await axios.get('http://localhost:3000/api/promotions')
-
-        this.promotions = response.data
-        console.log('Promotions fetched:', response.data)
-      } catch (error) {
-        console.error('Error fetching promotions:', error)
+        const res = await axios.get<Promotion[]>('http://localhost:3000/api/promotions')
+        this.promotions = res.data
+      } catch (err) {
+        console.error(err)
       }
     },
+
+    async fetchProducts() {
+      try {
+        const res = await axios.get<Product[]>('http://localhost:3000/api/products')
+        this.products = res.data
+      } catch (err) {
+        console.error(err)
+      }
+    },
+
+    async fetchGroups() {
+      try {
+        const res = await axios.get<string[]>('http://localhost:3000/api/groups')
+        this.groups = res.data
+      } catch (err) {
+        console.error(err)
+      }
+    },
+
+    handleCategoryTabChange(tab: string) {
+      this.activeCategoryTab = tab
+    },
+
+    handleProductTabChange(tab: string) {
+      this.activeProductTab = tab
+    },
+
+    getCategoryName(id: number): string {
+      const c = this.categories.find((cat) => cat.id === id)
+      return c ? c.name : 'Unknown'
+    },
+
+    handleAddToCart(product: Product) {
+      alert(`Added ${product.name} to cart!`)
+    },
   },
+
   mounted() {
-    // Add this mounted hook
-    // Fetch data when the component is mounted (loaded)
     this.fetchCategories()
     this.fetchPromotions()
-  },
-  data() {
-    return {
-      categories: [
-        // {
-        //   name: 'Cake & Milk',
-        //   productCount: 14,
-        //   color: '#F2FCE4',
-        //   img: 'src/assets/images/Cake&Milk.png',
-        // },
-        // {
-        //   name: 'Peach',
-        //   productCount: 17,
-        //   color: '#FFFCEB',
-        //   img: 'src/assets/images/Peach.png',
-        // },
-        // {
-        //   name: 'Oganic Kiwi',
-        //   productCount: 21,
-        //   color: '#ECFFEC',
-        //   img: 'src/assets/images/kiwi.png',
-        // },
-        // {
-        //   name: 'Red Apple',
-        //   productCount: 68,
-        //   color: '#FEEFEA',
-        //   img: 'src/assets/images/Red_apple.png',
-        // },
-        // {
-        //   name: 'Snack',
-        //   productCount: 34,
-        //   color: '#FFF3EB',
-        //   img: 'src/assets/images/Snack.png',
-        // },
-        // {
-        //   name: 'Black Plum',
-        //   productCount: 25,
-        //   color: '#FFF3FF',
-        //   img: 'src/assets/images/Black Plum.png',
-        // },
-        // {
-        //   name: 'Vegetable',
-        //   productCount: 65,
-        //   color: '#F2FCE4',
-        //   img: 'src/assets/images/Vegetable.png',
-        // },
-        // {
-        //   name: 'Headphone',
-        //   productCount: 33,
-        //   color: '#FFFCEB',
-        //   img: 'src/assets/images/Headphone.png',
-        // },
-        // {
-        //   name: 'Cafe & Milk',
-        //   productCount: 54,
-        //   color: '#F2FCE4',
-        //   img: 'src/assets/images/Cafe&Milk.png',
-        // },
-        // {
-        //   name: 'Orange',
-        //   productCount: 63,
-        //   color: '#FFF3FF',
-        //   img: 'src/assets/images/Orange.png',
-        // },
-      ],
-      promotions: [
-        // {
-        //   title: 'Everyday Fresh & Clean with Our Products',
-        //   btnColor: '#3BB77E',
-        //   color: '#F0E9D7',
-        //   img: 'src/assets/images/Onion.png',
-        //   buttonColor: '#42B678',
-        //   url: '/promotions/1',
-        // },
-        // {
-        //   title: 'Make your Breakfast Healthy and Easy',
-        //   btnColor: '#3BB77E',
-        //   color: '#F2E8E9',
-        //   img: 'src/assets/images/Cake&Milk Promotion.png',
-        //   buttonColor: '#42B678',
-        //   url: '/promotions/2',
-        // },
-        // {
-        //   title: 'The best Organic Products Online',
-        //   btnColor: '#FDC040',
-        //   color: '#E6EAF3',
-        //   img: 'src/assets/images/Organic.png',
-        //   buttonColor: '#FBC040',
-        //   url: '/promotions/3',
-        // },
-      ],
-    }
+    this.fetchProducts()
+    this.fetchGroups()
   },
 }
 </script>
+
 <style scoped>
 .categories-grid {
   display: flex;
@@ -155,6 +201,12 @@ export default {
   display: flex;
   justify-content: center;
   gap: 20px;
+  padding: 20px;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
   padding: 20px;
 }
 </style>
