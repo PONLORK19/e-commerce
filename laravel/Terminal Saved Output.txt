@@ -1,0 +1,468 @@
+Last login: Sat Dec 20 07:18:34 on ttys000
+ponlork@Ponlorks-MacBook-Air ~ % docker --version
+zsh: command not found: docker
+ponlork@Ponlorks-MacBook-Air ~ % docker --version
+Docker version 29.1.3, build f52814d
+ponlork@Ponlorks-MacBook-Air ~ % docker compose version
+
+Docker Compose version v2.40.3-desktop.1
+ponlork@Ponlorks-MacBook-Air ~ % cd Doc*
+ponlork@Ponlorks-MacBook-Air Documents % ls
+Database		Screenshot		e-commerce
+Distributed System	Software Engineering	gic2024
+Internet Programming	Velocity
+ponlork@Ponlorks-MacBook-Air Documents % cd gic2024
+ponlork@Ponlorks-MacBook-Air gic2024 % ls
+Dockerfile		laravel			php.ini
+docker-compose.yml	nginx.conf
+ponlork@Ponlorks-MacBook-Air gic2024 % docker compose ps
+NAME      IMAGE     COMMAND   SERVICE   CREATED   STATUS    PORTS
+ponlork@Ponlorks-MacBook-Air gic2024 % docker compose up -d
+[+] Running 24/24
+ ✔ db Pulled                                                             237.3s 
+ ✔ webserver Pulled                                                      114.6s 
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+[+] Building 578.3s (11/11) FINISHED                                            
+ => [internal] load local bake definitions                                 0.0s
+ => => reading from stdin 505B                                             0.0s
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 396B                                       0.0s
+ => [internal] load metadata for docker.io/library/php:8.2-fpm             3.9s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => [1/5] FROM docker.io/library/php:8.2-fpm@sha256:0fd90ce236891fcc81b  220.5s
+ => => resolve docker.io/library/php:8.2-fpm@sha256:0fd90ce236891fcc81b99  0.0s
+ => => sha256:64e67eb868eb10fa507a447e722e595f268bdc8cbd9 9.18kB / 9.18kB  0.8s
+ => => sha256:1a69dc721f2029347e2507b63225b64e3af9909c1298bd9 245B / 245B  1.3s
+ => => sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6d 32B / 32B  1.0s
+ => => sha256:4c7ed7d337db901b0cb831bb563005f4cc91e4f6d276cc0 251B / 251B  1.2s
+ => => sha256:a00585d56b82a43ebf156abd74a0d2a26fb7c7731ef 2.45kB / 2.45kB  0.7s
+ => => sha256:50f27088e5468cf5bbc81dd39b7b4eea7b03637 11.68MB / 11.68MB  219.2s
+ => => sha256:61aafc8de4410dfc222a8802500bd3bd9eb9b2dc95ad71a 486B / 486B  1.0s
+ => => sha256:38a941fa3865eea80b035dd8ce8d54ac88f94e39 12.30MB / 12.30MB  10.1s
+ => => sha256:cb7d3c59aa8363285a312558b061d3a5f45d1f5a78c1102 224B / 224B  0.9s
+ => => sha256:59d1feadc1c1e88b9dd03e425bcb16f2f51f8 110.16MB / 110.16MB  141.4s
+ => => sha256:b791392dd0fd0392433c548053b3234b6c7a28532daac78 226B / 226B  3.6s
+ => => extracting sha256:b791392dd0fd0392433c548053b3234b6c7a28532daac78c  0.0s
+ => => extracting sha256:59d1feadc1c1e88b9dd03e425bcb16f2f51f8e906564631a  1.5s
+ => => extracting sha256:cb7d3c59aa8363285a312558b061d3a5f45d1f5a78c1102b  0.0s
+ => => extracting sha256:38a941fa3865eea80b035dd8ce8d54ac88f94e39ac32c805  0.0s
+ => => extracting sha256:61aafc8de4410dfc222a8802500bd3bd9eb9b2dc95ad71a9  0.0s
+ => => extracting sha256:50f27088e5468cf5bbc81dd39b7b4eea7b03637a6650b94b  0.2s
+ => => extracting sha256:a00585d56b82a43ebf156abd74a0d2a26fb7c7731ef5d628  0.0s
+ => => extracting sha256:4c7ed7d337db901b0cb831bb563005f4cc91e4f6d276cc0a  0.0s
+ => => extracting sha256:1a69dc721f2029347e2507b63225b64e3af9909c1298bd90  0.0s
+ => => extracting sha256:4f4fb700ef54461cfa02571ae0db9a0dc1e0cdb5577484a6  0.0s
+ => => extracting sha256:64e67eb868eb10fa507a447e722e595f268bdc8cbd95b238  0.0s
+ => [2/5] RUN apt update && apt install -y unzip curl git nodejs npm li  324.0s
+ => [3/5] RUN docker-php-ext-install pdo pdo_mysql zip                     7.2s
+ => [4/5] RUN curl -sS https://getcomposer.org/installer | php -- --insta  5.7s
+ => [5/5] WORKDIR /var/www                                                 0.0s
+ => exporting to image                                                    16.5s
+ => => exporting layers                                                   13.1s
+ => => exporting manifest sha256:977179a3eba37a02a65e99f5edc0e131095fd511  0.0s
+ => => exporting config sha256:53a59400ba83718495d516711301879aca14e8b4f6  0.0s
+ => => exporting attestation manifest sha256:6e814acea5daf806ca2d69df2eea  0.0s
+ => => exporting manifest list sha256:cd54f5bd29ba4a44ab156d57ed1b4d765c8  0.0s
+ => => naming to docker.io/library/gic2024-app:latest                      0.0s
+ => => unpacking to docker.io/library/gic2024-app:latest                   3.4s
+ => resolving provenance for metadata file                                 0.0s
+[+] Running 4/5
+ ✔ gic2024-app              Built                                          0.0s 
+ ✔ Network gic2024_laravel  Created                                        0.0s 
+ ✔ Container nginx_server   Started                                        3.4s 
+ ✔ Container app            Started                                        3.4s 
+ ⠸ Container mysql_db       Starting                                       3.4s 
+Error response from daemon: ports are not available: exposing port TCP 0.0.0.0:3306 -> 127.0.0.1:0: listen tcp 0.0.0.0:3306: bind: address already in use
+ponlork@Ponlorks-MacBook-Air gic2024 % pwd
+/Users/ponlork/Documents/gic2024
+ponlork@Ponlorks-MacBook-Air gic2024 % ls
+Dockerfile		laravel			php.ini
+docker-compose.yml	nginx.conf
+ponlork@Ponlorks-MacBook-Air gic2024 % code .
+ponlork@Ponlorks-MacBook-Air gic2024 % docker compose up -d
+[+] Running 3/3
+ ✔ Container nginx_server  Running                                         0.0s 
+ ✔ Container app           Running                                         0.0s 
+ ✔ Container mysql_db      Started                                         0.2s 
+ponlork@Ponlorks-MacBook-Air gic2024 % docker compose exec app bash
+
+root@0807cf0fc9b8:/var/www# composer install
+Installing dependencies from lock file (including require-dev)
+Verifying lock file contents can be installed on current platform.
+Package operations: 111 installs, 0 updates, 0 removals
+  - Downloading doctrine/inflector (2.0.10)
+  - Downloading doctrine/lexer (3.0.1)
+  - Downloading symfony/polyfill-ctype (v1.31.0)
+  - Downloading webmozart/assert (1.11.0)
+  - Downloading dragonmantank/cron-expression (v3.4.0)
+  - Downloading symfony/deprecation-contracts (v3.5.1)
+  - Downloading psr/container (2.0.2)
+  - Downloading fakerphp/faker (v1.24.1)
+  - Downloading symfony/polyfill-php83 (v1.31.0)
+  - Downloading symfony/polyfill-mbstring (v1.31.0)
+  - Downloading symfony/http-foundation (v7.2.3)
+  - Downloading fruitcake/php-cors (v1.3.0)
+  - Downloading psr/http-message (2.0)
+  - Downloading psr/http-client (1.0.3)
+  - Downloading ralouphie/getallheaders (3.0.3)
+  - Downloading psr/http-factory (1.1.0)
+  - Downloading guzzlehttp/psr7 (2.7.0)
+  - Downloading guzzlehttp/promises (2.0.4)
+  - Downloading guzzlehttp/guzzle (7.9.2)
+  - Downloading symfony/polyfill-php80 (v1.31.0)
+  - Downloading guzzlehttp/uri-template (v1.0.4)
+  - Downloading symfony/polyfill-intl-normalizer (v1.31.0)
+  - Downloading symfony/polyfill-intl-grapheme (v1.31.0)
+  - Downloading symfony/string (v7.2.0)
+  - Downloading symfony/service-contracts (v3.5.1)
+  - Downloading symfony/console (v7.2.1)
+  - Downloading voku/portable-ascii (2.0.3)
+  - Downloading phpoption/phpoption (1.9.3)
+  - Downloading graham-campbell/result-type (v1.1.3)
+  - Downloading vlucas/phpdotenv (v5.6.1)
+  - Downloading symfony/css-selector (v7.2.0)
+  - Downloading tijsverkoyen/css-to-inline-styles (v2.3.0)
+  - Downloading symfony/var-dumper (v7.2.3)
+  - Downloading symfony/polyfill-uuid (v1.31.0)
+  - Downloading symfony/uid (v7.2.0)
+  - Downloading symfony/routing (v7.2.3)
+  - Downloading symfony/process (v7.2.0)
+  - Downloading symfony/polyfill-intl-idn (v1.31.0)
+  - Downloading symfony/mime (v7.2.3)
+  - Downloading psr/event-dispatcher (1.0.0)
+  - Downloading symfony/event-dispatcher-contracts (v3.5.1)
+  - Downloading symfony/event-dispatcher (v7.2.0)
+  - Downloading psr/log (3.0.2)
+  - Downloading egulias/email-validator (4.0.3)
+  - Downloading symfony/mailer (v7.2.3)
+  - Downloading symfony/error-handler (v7.2.3)
+  - Downloading symfony/http-kernel (v7.2.3)
+  - Downloading symfony/finder (v7.2.2)
+  - Downloading ramsey/collection (2.0.0)
+  - Downloading brick/math (0.12.1)
+  - Downloading ramsey/uuid (4.7.6)
+  - Downloading psr/simple-cache (3.0.0)
+  - Downloading nunomaduro/termwind (v2.3.0)
+  - Downloading symfony/translation-contracts (v3.5.1)
+  - Downloading symfony/translation (v7.2.2)
+  - Downloading psr/clock (1.0.0)
+  - Downloading symfony/clock (v7.2.0)
+  - Downloading carbonphp/carbon-doctrine-types (3.2.0)
+  - Downloading nesbot/carbon (3.8.5)
+  - Downloading monolog/monolog (3.8.1)
+  - Downloading league/uri-interfaces (7.5.0)
+  - Downloading league/uri (7.5.1)
+  - Downloading league/mime-type-detection (1.16.0)
+  - Downloading league/flysystem-local (3.29.0)
+  - Downloading league/flysystem (3.29.1)
+  - Downloading nette/utils (v4.0.5)
+  - Downloading nette/schema (v1.3.2)
+  - Downloading dflydev/dot-access-data (v3.0.3)
+  - Downloading league/config (v1.2.0)
+  - Downloading league/commonmark (2.6.1)
+  - Downloading laravel/serializable-closure (v2.0.3)
+  - Downloading laravel/prompts (v0.3.5)
+  - Downloading laravel/framework (v11.43.0)
+  - Downloading laravel/breeze (v2.3.4)
+  - Downloading laravel/pail (v1.2.2)
+  - Downloading laravel/pint (v1.21.0)
+  - Downloading symfony/yaml (v7.2.3)
+  - Downloading laravel/sail (v1.41.0)
+  - Downloading nikic/php-parser (v5.4.0)
+  - Downloading psy/psysh (v0.12.7)
+  - Downloading laravel/tinker (v2.10.1)
+  - Downloading hamcrest/hamcrest-php (v2.0.1)
+  - Downloading mockery/mockery (1.6.12)
+  - Downloading filp/whoops (2.17.0)
+  - Downloading nunomaduro/collision (v8.6.1)
+  - Downloading staabm/side-effects-detector (1.0.5)
+  - Downloading sebastian/version (5.0.2)
+  - Downloading sebastian/type (5.1.0)
+  - Downloading sebastian/recursion-context (6.0.2)
+  - Downloading sebastian/object-reflector (4.0.1)
+  - Downloading sebastian/object-enumerator (6.0.1)
+  - Downloading sebastian/global-state (7.0.2)
+  - Downloading sebastian/exporter (6.3.0)
+  - Downloading sebastian/environment (7.2.0)
+  - Downloading sebastian/diff (6.0.2)
+  - Downloading sebastian/comparator (6.3.0)
+  - Downloading sebastian/code-unit (3.0.2)
+  - Downloading sebastian/cli-parser (3.0.2)
+  - Downloading phpunit/php-timer (7.0.1)
+  - Downloading phpunit/php-text-template (4.0.1)
+  - Downloading phpunit/php-invoker (5.0.1)
+  - Downloading phpunit/php-file-iterator (5.1.0)
+  - Downloading theseer/tokenizer (1.2.3)
+  - Downloading sebastian/lines-of-code (3.0.1)
+  - Downloading sebastian/complexity (4.0.1)
+  - Downloading sebastian/code-unit-reverse-lookup (4.0.1)
+  - Downloading phpunit/php-code-coverage (11.0.8)
+  - Downloading phar-io/version (3.2.1)
+  - Downloading phar-io/manifest (2.0.4)
+  - Downloading myclabs/deep-copy (1.13.0)
+  - Downloading phpunit/phpunit (11.5.8)
+  - Installing doctrine/inflector (2.0.10): Extracting archive
+  - Installing doctrine/lexer (3.0.1): Extracting archive
+  - Installing symfony/polyfill-ctype (v1.31.0): Extracting archive
+  - Installing webmozart/assert (1.11.0): Extracting archive
+  - Installing dragonmantank/cron-expression (v3.4.0): Extracting archive
+  - Installing symfony/deprecation-contracts (v3.5.1): Extracting archive
+  - Installing psr/container (2.0.2): Extracting archive
+  - Installing fakerphp/faker (v1.24.1): Extracting archive
+  - Installing symfony/polyfill-php83 (v1.31.0): Extracting archive
+  - Installing symfony/polyfill-mbstring (v1.31.0): Extracting archive
+  - Installing symfony/http-foundation (v7.2.3): Extracting archive
+  - Installing fruitcake/php-cors (v1.3.0): Extracting archive
+  - Installing psr/http-message (2.0): Extracting archive
+  - Installing psr/http-client (1.0.3): Extracting archive
+  - Installing ralouphie/getallheaders (3.0.3): Extracting archive
+  - Installing psr/http-factory (1.1.0): Extracting archive
+  - Installing guzzlehttp/psr7 (2.7.0): Extracting archive
+  - Installing guzzlehttp/promises (2.0.4): Extracting archive
+  - Installing guzzlehttp/guzzle (7.9.2): Extracting archive
+  - Installing symfony/polyfill-php80 (v1.31.0): Extracting archive
+  - Installing guzzlehttp/uri-template (v1.0.4): Extracting archive
+  - Installing symfony/polyfill-intl-normalizer (v1.31.0): Extracting archive
+  - Installing symfony/polyfill-intl-grapheme (v1.31.0): Extracting archive
+  - Installing symfony/string (v7.2.0): Extracting archive
+  - Installing symfony/service-contracts (v3.5.1): Extracting archive
+  - Installing symfony/console (v7.2.1): Extracting archive
+  - Installing voku/portable-ascii (2.0.3): Extracting archive
+  - Installing phpoption/phpoption (1.9.3): Extracting archive
+  - Installing graham-campbell/result-type (v1.1.3): Extracting archive
+  - Installing vlucas/phpdotenv (v5.6.1): Extracting archive
+  - Installing symfony/css-selector (v7.2.0): Extracting archive
+  - Installing tijsverkoyen/css-to-inline-styles (v2.3.0): Extracting archive
+  - Installing symfony/var-dumper (v7.2.3): Extracting archive
+  - Installing symfony/polyfill-uuid (v1.31.0): Extracting archive
+  - Installing symfony/uid (v7.2.0): Extracting archive
+  - Installing symfony/routing (v7.2.3): Extracting archive
+  - Installing symfony/process (v7.2.0): Extracting archive
+  - Installing symfony/polyfill-intl-idn (v1.31.0): Extracting archive
+  - Installing symfony/mime (v7.2.3): Extracting archive
+  - Installing psr/event-dispatcher (1.0.0): Extracting archive
+  - Installing symfony/event-dispatcher-contracts (v3.5.1): Extracting archive
+  - Installing symfony/event-dispatcher (v7.2.0): Extracting archive
+  - Installing psr/log (3.0.2): Extracting archive
+  - Installing egulias/email-validator (4.0.3): Extracting archive
+  - Installing symfony/mailer (v7.2.3): Extracting archive
+  - Installing symfony/error-handler (v7.2.3): Extracting archive
+  - Installing symfony/http-kernel (v7.2.3): Extracting archive
+  - Installing symfony/finder (v7.2.2): Extracting archive
+  - Installing ramsey/collection (2.0.0): Extracting archive
+  - Installing brick/math (0.12.1): Extracting archive
+  - Installing ramsey/uuid (4.7.6): Extracting archive
+  - Installing psr/simple-cache (3.0.0): Extracting archive
+  - Installing nunomaduro/termwind (v2.3.0): Extracting archive
+  - Installing symfony/translation-contracts (v3.5.1): Extracting archive
+  - Installing symfony/translation (v7.2.2): Extracting archive
+  - Installing psr/clock (1.0.0): Extracting archive
+  - Installing symfony/clock (v7.2.0): Extracting archive
+  - Installing carbonphp/carbon-doctrine-types (3.2.0): Extracting archive
+  - Installing nesbot/carbon (3.8.5): Extracting archive
+  - Installing monolog/monolog (3.8.1): Extracting archive
+  - Installing league/uri-interfaces (7.5.0): Extracting archive
+  - Installing league/uri (7.5.1): Extracting archive
+  - Installing league/mime-type-detection (1.16.0): Extracting archive
+  - Installing league/flysystem-local (3.29.0): Extracting archive
+  - Installing league/flysystem (3.29.1): Extracting archive
+  - Installing nette/utils (v4.0.5): Extracting archive
+  - Installing nette/schema (v1.3.2): Extracting archive
+  - Installing dflydev/dot-access-data (v3.0.3): Extracting archive
+  - Installing league/config (v1.2.0): Extracting archive
+  - Installing league/commonmark (2.6.1): Extracting archive
+  - Installing laravel/serializable-closure (v2.0.3): Extracting archive
+  - Installing laravel/prompts (v0.3.5): Extracting archive
+  - Installing laravel/framework (v11.43.0): Extracting archive
+  - Installing laravel/breeze (v2.3.4): Extracting archive
+  - Installing laravel/pail (v1.2.2): Extracting archive
+  - Installing laravel/pint (v1.21.0): Extracting archive
+  - Installing symfony/yaml (v7.2.3): Extracting archive
+  - Installing laravel/sail (v1.41.0): Extracting archive
+  - Installing nikic/php-parser (v5.4.0): Extracting archive
+  - Installing psy/psysh (v0.12.7): Extracting archive
+  - Installing laravel/tinker (v2.10.1): Extracting archive
+  - Installing hamcrest/hamcrest-php (v2.0.1): Extracting archive
+  - Installing mockery/mockery (1.6.12): Extracting archive
+  - Installing filp/whoops (2.17.0): Extracting archive
+  - Installing nunomaduro/collision (v8.6.1): Extracting archive
+  - Installing staabm/side-effects-detector (1.0.5): Extracting archive
+  - Installing sebastian/version (5.0.2): Extracting archive
+  - Installing sebastian/type (5.1.0): Extracting archive
+  - Installing sebastian/recursion-context (6.0.2): Extracting archive
+  - Installing sebastian/object-reflector (4.0.1): Extracting archive
+  - Installing sebastian/object-enumerator (6.0.1): Extracting archive
+  - Installing sebastian/global-state (7.0.2): Extracting archive
+  - Installing sebastian/exporter (6.3.0): Extracting archive
+  - Installing sebastian/environment (7.2.0): Extracting archive
+  - Installing sebastian/diff (6.0.2): Extracting archive
+  - Installing sebastian/comparator (6.3.0): Extracting archive
+  - Installing sebastian/code-unit (3.0.2): Extracting archive
+  - Installing sebastian/cli-parser (3.0.2): Extracting archive
+  - Installing phpunit/php-timer (7.0.1): Extracting archive
+  - Installing phpunit/php-text-template (4.0.1): Extracting archive
+  - Installing phpunit/php-invoker (5.0.1): Extracting archive
+  - Installing phpunit/php-file-iterator (5.1.0): Extracting archive
+  - Installing theseer/tokenizer (1.2.3): Extracting archive
+  - Installing sebastian/lines-of-code (3.0.1): Extracting archive
+  - Installing sebastian/complexity (4.0.1): Extracting archive
+  - Installing sebastian/code-unit-reverse-lookup (4.0.1): Extracting archive
+  - Installing phpunit/php-code-coverage (11.0.8): Extracting archive
+  - Installing phar-io/version (3.2.1): Extracting archive
+  - Installing phar-io/manifest (2.0.4): Extracting archive
+  - Installing myclabs/deep-copy (1.13.0): Extracting archive
+  - Installing phpunit/phpunit (11.5.8): Extracting archive
+Generating optimized autoload files
+> Illuminate\Foundation\ComposerScripts::postAutoloadDump
+> @php artisan package:discover --ansi
+
+   INFO  Discovering packages.  
+
+  laravel/breeze ........................................................ DONE
+  laravel/pail .......................................................... DONE
+  laravel/sail .......................................................... DONE
+  laravel/tinker ........................................................ DONE
+  nesbot/carbon ......................................................... DONE
+  nunomaduro/collision .................................................. DONE
+  nunomaduro/termwind ................................................... DONE
+
+81 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+root@0807cf0fc9b8:/var/www# 
+root@0807cf0fc9b8:/var/www# 
+root@0807cf0fc9b8:/var/www# exit
+exit
+ponlork@Ponlorks-MacBook-Air gic2024 % docker compose up -d --build
+[+] Building 2.9s (11/11) FINISHED                                              
+ => [internal] load local bake definitions                                 0.0s
+ => => reading from stdin 505B                                             0.0s
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 396B                                       0.0s
+ => [internal] load metadata for docker.io/library/php:8.2-fpm             2.6s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => [1/5] FROM docker.io/library/php:8.2-fpm@sha256:0fd90ce236891fcc81b99  0.0s
+ => => resolve docker.io/library/php:8.2-fpm@sha256:0fd90ce236891fcc81b99  0.0s
+ => CACHED [2/5] RUN apt update && apt install -y unzip curl git nodejs n  0.0s
+ => CACHED [3/5] RUN docker-php-ext-install pdo pdo_mysql zip              0.0s
+ => CACHED [4/5] RUN curl -sS https://getcomposer.org/installer | php --   0.0s
+ => CACHED [5/5] WORKDIR /var/www                                          0.0s
+ => exporting to image                                                     0.0s
+ => => exporting layers                                                    0.0s
+ => => exporting manifest sha256:977179a3eba37a02a65e99f5edc0e131095fd511  0.0s
+ => => exporting config sha256:53a59400ba83718495d516711301879aca14e8b4f6  0.0s
+ => => exporting attestation manifest sha256:1d97e072adbd8bd1eb24806152ad  0.0s
+ => => exporting manifest list sha256:632751164f4f51820bde0ee5ed4d35aa039  0.0s
+ => => naming to docker.io/library/gic2024-app:latest                      0.0s
+ => => unpacking to docker.io/library/gic2024-app:latest                   0.0s
+ => resolving provenance for metadata file                                 0.0s
+[+] Running 4/4
+ ✔ gic2024-app             Built                                           0.0s 
+ ✔ Container mysql_db      Running                                         0.0s 
+ ✔ Container nginx_server  Running                                         0.0s 
+ ✔ Container app           Started                                         0.3s 
+ponlork@Ponlorks-MacBook-Air gic2024 % docker compose exec -it app bash
+root@7d6e86a6b00b:/var/www# exit
+exit
+ponlork@Ponlorks-MacBook-Air gic2024 % docker compose exec -it app bash
+root@7d6e86a6b00b:/var/www# php artisan make:migration create_categories_table --create=categories
+
+   INFO  Migration [database/migrations/2025_12_20_010947_create_categories_table.php] created successfully.  
+
+root@7d6e86a6b00b:/var/www# nano database/migrations/xxxx_create_categories_table.php
+bash: nano: command not found
+root@7d6e86a6b00b:/var/www# exit
+exit
+ponlork@Ponlorks-MacBook-Air gic2024 % apt update
+zsh: command not found: apt
+ponlork@Ponlorks-MacBook-Air gic2024 % docker compose exec -it app bash
+
+root@7d6e86a6b00b:/var/www# apt updat
+Error: Invalid operation updat
+root@7d6e86a6b00b:/var/www# apt update
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease
+Hit:3 http://deb.debian.org/debian-security trixie-security InRelease
+All packages are up to date.    
+root@7d6e86a6b00b:/var/www# apt install nano -y  
+Installing:                     
+  nano
+
+Suggested packages:
+  hunspell
+
+Summary:
+  Upgrading: 0, Installing: 1, Removing: 0, Not Upgrading: 0
+  Download size: 635 kB
+  Space needed: 2936 kB / 223 GB available
+
+Get:1 http://deb.debian.org/debian trixie/main arm64 nano arm64 8.4-1 [635 kB]
+Fetched 635 kB in 1s (1202 kB/s)
+debconf: unable to initialize frontend: Dialog
+debconf: (No usable dialog-like program is installed, so the dialog based frontend cannot be used. at /usr/share/perl5/Debconf/FrontEnd/Dialog.pm line 79, <STDIN> line 1.)
+debconf: falling back to frontend: Readline
+Selecting previously unselected package nano.
+(Reading database ... 51899 files and directories currently installed.)
+Preparing to unpack .../archives/nano_8.4-1_arm64.deb ...
+Unpacking nano (8.4-1) ...
+Setting up nano (8.4-1) ...
+update-alternatives: using /bin/nano to provide /usr/bin/editor (editor) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/editor.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group editor) doesn't exist
+update-alternatives: using /bin/nano to provide /usr/bin/pico (pico) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/pico.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group pico) doesn't exist
+root@7d6e86a6b00b:/var/www# nano database/migrations/xxxx_create_categories_table.php
+
+  GNU nano 8.4               database/migrations/xxxx_create_categories_table.php *                       
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up()
+    {
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('categories');
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+^G Help        ^O Write Out   ^F Where Is    ^K Cut         ^T Execute     ^C Location    M-U Undo
+^X Exit        ^R Read File   ^\ Replace     ^U Paste       ^J Justify     ^/ Go To Line  M-E Redo
